@@ -5,17 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TaskDetailsActivity extends AppCompatActivity {
     TextView titleTaskDetails,descriptionTaskDetails,dateTaskDetails;
-    String data1,data2,data3;
+    int size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
-
         titleTaskDetails = findViewById(R.id.details_title);
         descriptionTaskDetails = findViewById(R.id.details_description);
         dateTaskDetails = findViewById(R.id.details_date);
@@ -24,15 +22,13 @@ public class TaskDetailsActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        data1 = getIntent().getStringExtra("data1");
-        data2 = getIntent().getStringExtra("data2");
-        data3 = getIntent().getStringExtra("data3");
+        size=getIntent().getIntExtra("data1",0);
     }
 
     private void setData() {
-        titleTaskDetails.setText(data1);
-        descriptionTaskDetails.setText(data2);
-        dateTaskDetails.setText(data3);
+        titleTaskDetails.setText(MainActivity.myTask.get(size).getTitle());
+        descriptionTaskDetails.setText(MainActivity.myTask.get(size).getDescription());
+        dateTaskDetails.setText(MainActivity.myTask.get(size).getDate());
     }
 
 

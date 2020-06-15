@@ -12,14 +12,8 @@ public class Task  {
         this.date = date;
         check=false;
     }
-public Task(int i){
-        check=false;
-        date="11/11/2001";
-        title="NoTitle yet!"+i;
-        description="jhfvbnjmk";
-}
 
-    public String getTitle() {
+    public  String getTitle() {
         return title;
     }
 

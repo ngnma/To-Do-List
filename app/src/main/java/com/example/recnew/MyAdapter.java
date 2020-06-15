@@ -15,22 +15,22 @@ import java.util.ArrayList;
 
 public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     Context context;
-    ArrayList<Task> t;
 
-
-    public MyAdapter(Context context,ArrayList<Task> t) {
-        this.t=t;
+    public MyAdapter(Context context){
         this.context=context;
     }
 
+    public void notifyData(ArrayList<Task> t) {
+      MainActivity.myTask=t;
+        notifyDataSetChanged();
+    }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView,textView2,textView3;
+        TextView textView;
         ConstraintLayout mainLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView_title);
-            textView2 = itemView.findViewById(R.id.textView_title2);
-            textView3 = itemView.findViewById(R.id.textView_title3);
             mainLayout=itemView.findViewById(R.id.mainLayout);
         }
     }
@@ -45,25 +45,23 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.textView.setText(t.get(position).getTitle());
-        holder.textView2.setText(t.get(position).getDescription());
-        holder.textView3.setText(t.get(position).getDate());
-
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+          holder.textView.setText(MainActivity.myTask.get(position).getTitle());
+          holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,TaskDetailsActivity.class);
-                intent.putExtra("data1",t.get(position).getTitle());
-                intent.putExtra("data2",t.get(position).getDescription());
-                intent.putExtra("data3",t.get(position).getDate());
+                intent.putExtra("data1",position);
                 context.startActivity(intent);
             }
         });
 
     }
 
+
+
+
     @Override
     public int getItemCount() {
-        return t.size();
+        return MainActivity.myTask.size();
     }
 }

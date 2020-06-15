@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".AddingTaskActivity">
 
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        android:outlineAmbientShadowColor="#d0e3d0"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="41dp" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="330dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:outlineAmbientShadowColor="#d0e3d0"
+        app:layout_constraintTop_toBottomOf="@+id/etTitle"
+        tools:ignore="MissingConstraints,UnknownId"
+        tools:layout_editor_absoluteX="41dp" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Date like 11/11/2001"
+        android:inputType="textPersonName"
+        android:outlineAmbientShadowColor="#d0e3d0"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription"
+        tools:ignore="MissingConstraints,UnknownId"
+        tools:layout_editor_absoluteX="41dp" />
+
+    <Button
+        android:id="@+id/btnAddItem"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:outlineAmbientShadowColor="#d0e3d0"
+        android:shadowColor="#d0e3d0"
+        android:text="ADD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
