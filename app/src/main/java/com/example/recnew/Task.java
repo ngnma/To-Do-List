@@ -2,8 +2,8 @@ package com.example.recnew;
 import java.lang.*;
 import java.util.*;
 public class Task {
-    String title,description,date;
-    Boolean check;
+    public String title,description,date;
+    public Boolean check;
 
     public Task(String title, String description, String date, Boolean check) {
         this.title = title;
@@ -11,10 +11,10 @@ public class Task {
         this.date = date;
         this.check = check;
     }
-public Task(){
+public Task(int i){
         check=false;
         date="11/11/2001";
-        title="NoTitle yet!";
+        title="NoTitle yet!"+i;
         description="jhfvbnjmk";
 }
 

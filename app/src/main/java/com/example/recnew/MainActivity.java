@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    String myDataset[]={"asfd","asd","asddf","asfd","asd","asddf","asfd","asd","asddf","asfd","asd","asddf","asfd","asd","asddf","asfd","asd","asddf"};
-//    Task myTask[]={new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task(),new Task()};
+    public ArrayList<Task> myTask=new ArrayList<Task>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerview);
 
-        recyclerView.setAdapter(new MyAdapter(this,myDataset));
-//        recyclerView.setAdapter(new MyAdapter(this,myTask));
+        for(int i=0;i<20;i++)
+        myTask.add(new Task(i));
+
+        recyclerView.setAdapter(new MyAdapter(this,myTask));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

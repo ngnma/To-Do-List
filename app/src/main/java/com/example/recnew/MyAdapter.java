@@ -11,27 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
-    String[] mDataset;
-    Context context;
-//    Task[]t;
+import java.util.ArrayList;
 
-    public MyAdapter(Context context,String[] myDataset) {
-        mDataset = myDataset;
+public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+    Context context;
+    ArrayList<Task> t;
+
+
+    public MyAdapter(Context context,ArrayList<Task> t) {
+        this.t=t;
         this.context=context;
     }
-
-//    public MyAdapter(Context context,Task [] t) {
-//        this.t=t;
-//        this.context=context;
-//    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         ConstraintLayout mainLayout;
-        public MyViewHolder(View v) {
-            super(v);
-            textView = v.findViewById(R.id.textView_title);
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            textView = itemView.findViewById(R.id.textView_title);
             mainLayout=itemView.findViewById(R.id.mainLayout);
         }
     }
@@ -46,12 +43,12 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.textView.setText(mDataset[position]);
+        holder.textView.setText(t.get(position).getTitle());
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,TaskDetailsActivity.class);
-                intent.putExtra("deta1",mDataset[position]);
+                intent.putExtra("data1",t.get(position).getTitle());
                 context.startActivity(intent);
             }
         });
@@ -60,6 +57,6 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return t.size();
     }
 }
