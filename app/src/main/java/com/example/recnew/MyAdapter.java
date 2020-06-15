@@ -24,11 +24,13 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView textView,textView2,textView3;
         ConstraintLayout mainLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView_title);
+            textView2 = itemView.findViewById(R.id.textView_title2);
+            textView3 = itemView.findViewById(R.id.textView_title3);
             mainLayout=itemView.findViewById(R.id.mainLayout);
         }
     }
@@ -44,11 +46,16 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.textView.setText(t.get(position).getTitle());
+        holder.textView2.setText(t.get(position).getDescription());
+        holder.textView3.setText(t.get(position).getDate());
+
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,TaskDetailsActivity.class);
                 intent.putExtra("data1",t.get(position).getTitle());
+                intent.putExtra("data2",t.get(position).getDescription());
+                intent.putExtra("data3",t.get(position).getDate());
                 context.startActivity(intent);
             }
         });

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    public ArrayList<Task> myTask=new ArrayList<Task>();
+    public static ArrayList myTask=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
