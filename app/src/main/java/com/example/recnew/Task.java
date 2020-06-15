@@ -2,7 +2,7 @@ package com.example.recnew;
 import java.io.Serializable;
 import java.lang.*;
 import java.util.*;
-public class Task  {
+public class Task  implements Serializable{
     public String title,description,date;
     public Boolean check;
 

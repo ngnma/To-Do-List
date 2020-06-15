@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,17 +20,14 @@ import java.util.ArrayList;
 public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     Context context;
 
+
     public MyAdapter(Context context){
         this.context=context;
     }
 
-    public void notifyData(ArrayList<Task> t) {
-      MainActivity.myTask=t;
-        notifyDataSetChanged();
-    }
-
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        Switch aSwitch;
         ConstraintLayout mainLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -34,15 +35,12 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             mainLayout=itemView.findViewById(R.id.mainLayout);
         }
     }
-
-
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(context);
         View view=inflater.inflate(R.layout.my_row,parent,false);
         return new MyViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
           holder.textView.setText(MainActivity.myTask.get(position).getTitle());
@@ -54,12 +52,7 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 context.startActivity(intent);
             }
         });
-
     }
-
-
-
-
     @Override
     public int getItemCount() {
         return MainActivity.myTask.size();
