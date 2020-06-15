@@ -6,11 +6,11 @@ public class Task  {
     public String title,description,date;
     public Boolean check;
 
-    public Task(String title, String description, String date, Boolean check) {
+    public Task(String title, String description, String date) {
         this.title = title;
         this.description = description;
         this.date = date;
-        this.check = check;
+        check=false;
     }
 public Task(int i){
         check=false;
